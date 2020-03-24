@@ -8,12 +8,12 @@
       <!--登陆区域-->
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login_form">
         <!--用户名-->
-        <el-form-item prop="sSid">
-          <el-input v-model="loginForm.sSid" prefix-icon="el-icon-user"></el-input>
+        <el-form-item prop="username">
+          <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
         </el-form-item>
         <!--密码-->
-        <el-form-item prop="sPassword">
-          <el-input v-model="loginForm.sPassword" prefix-icon="el-icon-s-cooperation" type="password"></el-input>
+        <el-form-item prop="password">
+          <el-input v-model="loginForm.password" prefix-icon="el-icon-s-cooperation" type="password"></el-input>
         </el-form-item>
         <!--按钮区域-->
         <el-form-item class="btns">
@@ -31,18 +31,18 @@
       return {
         //这是登陆表单数据绑定
         loginForm:{
-          sSid:'201600418',
-          sPassword:'123456'
+          username:'admin',
+          password:'123456'
         },
         //这是表单验证规则
         loginFormRules:{
           //验证用户名规则
-          sSid:[
+          username:[
             { required: true, message: '请输入用户名', trigger: 'blur' },
             { min: 3, max: 15, message: '长度在 3 到 15 之间', trigger: 'blur' }
             ],
           //验证密码规则
-          sPassword:[
+          password:[
             { required: true, message: '请输入密码', trigger: 'blur' },
             { min: 6, max: 15, message: '密码长度在 3 到 15 之间', trigger: 'blur' }
           ]
@@ -57,11 +57,12 @@
       login() {
         this.$refs.loginFormRef.validate(async valid=>{
           if (!valid) return;
-          const {data:res}=await this.$http.post("/student/login.do", this.loginForm );
-          if (res.status!=0) return this.$message.error(res.msg);
+          const {data:res}=await this.$http.post("login", this.loginForm );
+
+          if (res.meta.status!=200) return this.$message.error(res.meta.msg);
           this.$message.success('登陆成功');
           //保存token
-          //window.sessionStorage.setItem('token',res.data.token);
+          window.sessionStorage.setItem('token',res.data.token);
           //页面跳转
           this.$router.push("/home");
         });
