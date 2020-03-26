@@ -9,7 +9,7 @@ import './assets/css/global.css'
 //导入axios
 import axios from 'axios'
 //配置请求的根路径
-axios.defaults.baseURL='http://localhost:8888/api/private/v1/'
+axios.defaults.baseURL='http://39.97.126.50:8888/api/private/v1/'
 // 请求拦截 请求头添加token
 axios.interceptors.request.use(config=>{
   config.headers.Authorization=window.sessionStorage.getItem("token")
