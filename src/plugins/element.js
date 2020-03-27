@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {Button, Switch, Tooltip} from 'element-ui'
+import {Button, Dialog, Pagination, Switch, Tooltip} from 'element-ui'
 import { Form,FormItem } from 'element-ui'
 import { Input } from 'element-ui'
 import { Message } from 'element-ui'
@@ -30,4 +30,6 @@ Vue.use(TableColumn)
 Vue.use(Table)
 Vue.use(Switch)
 Vue.use(Tooltip)
+Vue.use(Pagination)
+Vue.use(Dialog)
 Vue.prototype.$message=Message
