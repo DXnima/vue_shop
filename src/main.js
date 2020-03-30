@@ -5,6 +5,10 @@ import './plugins/element.js'
 
 //导入全局样式表
 import './assets/css/global.css'
+//导入
+import TreeTable from 'vue-table-with-tree-grid'
+
+Vue.component('tree-table', TreeTable)
 
 //导入axios
 import axios from 'axios'
