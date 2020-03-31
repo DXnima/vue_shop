@@ -134,7 +134,9 @@
               //图片路径赋值
               previewPath:'',
               //图片预览对话框
-              previewVisible:false
+              previewVisible:false,
+              //服务器IP
+              IP:'http://39.97.126.50:8888/'
             }
         },
         created() {
@@ -181,7 +183,7 @@
           },
           //处理图片预览
           handlePreview(file){
-            this.previewPath=file.response.data.url
+            this.previewPath=this.IP+file.response.data.tmp_path
             this.previewVisible=true
           },
           //处理移除图片操作
