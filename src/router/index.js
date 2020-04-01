@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
+import Router from 'vue-router'
+
+/*import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome'
 import Users from "../components/user/Users";
@@ -11,8 +12,23 @@ import Params from "../components/goods/Params";
 import GoodsList from "../components/goods/List"
 import Add from "../components/goods/Add";
 import Order from "../components/order/Order";
+import Report from "../components/report/Report";*/
 
-Vue.use(VueRouter)
+//路由懒加载
+const Login = () => import(/* webpackChunkNam:"login_home_welcome" */ '../components/Login.vue')
+const Home = () => import(/* webpackChunkNam:"login_home_welcome" */ '../components/Home.vue')
+const Welcome = () => import(/* webpackChunkNam:"login_home_welcome" */ '../components/Welcome.vue')
+const Users = () => import(/* webpackChunkNam:"Users_Rights_Roles" */ '../components/user/Users.vue')
+const Rights = () => import(/* webpackChunkNam:"Users_Rights_Roles" */ '../components/power/Rights.vue')
+const Roles = () => import(/* webpackChunkNam:"Users_Rights_Roles" */ '../components/power/Roles.vue')
+const Cate = () => import(/* webpackChunkNam:"Cate_Params" */ '../components/goods/Cate.vue')
+const Params = () => import(/* webpackChunkNam:"Cate_Params" */ '../components/goods/Params.vue')
+const GoodsList = () => import(/* webpackChunkNam:"GoodsList_Add" */ '../components/goods/List.vue')
+const Add = () => import(/* webpackChunkNam:"GoodsList_Add" */ '../components/goods/Add.vue')
+const Order = () => import(/* webpackChunkNam:"login_home_welcome" */ '../components/order/Order.vue')
+const Report = () => import(/* webpackChunkNam:"login_home_welcome" */ '../components/report/Report.vue')
+
+Vue.use(Router)
 
 const routes = [
   //重定向
@@ -32,12 +48,13 @@ const routes = [
       { path:'/params', component: Params},
       { path:'/goods', component: GoodsList},
       { path:'/goods/add', component: Add},
-      { path:'/orders', component: Order}
+      { path:'/orders', component: Order},
+      { path:'/reports', component: Report}
     ]
   }
 ]
 
-const router = new VueRouter({
+const router = new Router({
   routes
 })
 
