@@ -1,5 +1,8 @@
 # weather-ui
 
+## 使用的技术
+Vue | Echarts | Axios | Element
+
 ## Project setup
 ```
 npm install
